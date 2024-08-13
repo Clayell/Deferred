@@ -60,8 +60,6 @@ half4 frag (unity_v2f_deferred i) : SV_Target
     float3 eyeVec = normalize(worldPos - _WorldSpaceCameraPos);
     half oneMinusReflectivity = 1 - SpecularStrength(data.specularColor);
 
-    //half3 worldNormalRefl = reflect(eyeVec, data.normalWorld);
-
     UnityLight light;
     light.color = half3(0, 0, 0);
     light.dir = half3(0, 1, 0);
@@ -76,10 +74,9 @@ half4 frag (unity_v2f_deferred i) : SV_Target
     if (useReflectionProbeOnCurrentCamera > 0)
     {
         // The reflection probe is only ever rendered in one space, not matching IVA orientation
-        // Rotate normals when in IVA to sample the probe correctly
+        // Rotate normals when in IVA to sample the probe correctly, reset them at the end for the remaining calculations
         float3 actualWorldNormal = data.normalWorld;
-        float3 reflectionProbeSpaceNormal = mul(internalSpaceToWorld, float4(data.normalWorld, 0.0));
-        data.normalWorld = reflectionProbeSpaceNormal;
+        data.normalWorld = mul(internalSpaceToWorld, float4(data.normalWorld, 0.0));
 
         // Unused member don't need to be initialized
         UnityGIInput d;
