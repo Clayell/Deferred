@@ -70,7 +70,7 @@ Mods that say "renders in forward" means they may appear to render correctly but
 | FreeIVA | Fully compatible since version 0.2.19.0, versions before that have other parts of the craft appear hollow when seen through windows
 | Shaddy | Renders in forward
 | NeptuneCamera  | Compatible since 4.3, previous versions incompatible
-| ProceduralFairings | Incompatible, white fairings on hover
+| ProceduralFairings | Incompatible, white fairings on hover (can be fixed with HDR in TUFX)
 | Camera mods | Unknown/untested
 
 
